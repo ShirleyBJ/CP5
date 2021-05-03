@@ -1,7 +1,7 @@
 <?php
 // Nettoie les données passées dans POST : htmlspecialchars
 $mail = (isset($_POST['mail']) && !empty($_POST['mail'])) ? htmlspecialchars($_POST['mail']) : null;
-$pass = (isset($_POST['pass']) && !empty($_POST['pass'])) ? htmlspecialchars($_POST['pass']) : null;
+$pass = (isset($_POST['pass']) && !empty($_POST['mail'])) ? htmlspecialchars($_POST['pass']) : null;
 
 // Si mail et mot de passe exploitables 
 if ($mail && $pass) {
@@ -27,7 +27,7 @@ if ($mail && $pass) {
         } else {
             echo 'User inconnu';
         }
-    } catch (PDOException $err) {
+    } catch(PDOException $err) {
         echo $err->getMessage();
     }
 } else {
