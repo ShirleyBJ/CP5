@@ -25,13 +25,16 @@
         Il compte aujourd'hui XXX abonné.e.s.</p>
         <hr class="my-3">
         <p>Cliquez sur le bouton si dessous pour vous identifier :</p>
+        <!--Bouton modal s'inscrire-->
         <button class="btn-success" id="btnRegister" data-toggle="modal" 
-        data-target="#register">S'Inscrire</button>
+        data-target="#register"> S'incrire </button>
+        <!--Bouton modal se connecter-->
         <button class="btn-success" id="btnLogin" data-toggle="modal" 
-        data-target="#login">Se connecter</button>
+        data-target="#login"> Se connecter </button>
+        
     </div>
 
-    <!--//**Supra : Lien d'ajout d'un formulaire pour créer un nouveau membre*/-->
+    <!-- Supra : Lien d'ajout d'un formulaire pour créer un nouveau membre -->
     <div class="text-center">
     <a href="membre-add-form.php" class="btn btn-primary">Ajouter un membre</a>
     </div>
@@ -71,78 +74,80 @@
         ?>
     </section>
 
-    <!--MODAL INSCRIPTION-->
-    <div class="modal fade" id="register" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Inscription</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="register.php" method="post">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="pseudo">Pseudo</label>
-                            <input type="text" class="form-control" id="pseudo" name="pseudo" pattern="[A-Za-z0-9\u00c0-\u00ff]{5,20}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="mail">Mail</label>
-                            <input type="email" class="form-control" id="mail" name="mail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="pass">Mot de passe</label>
-                            <input type="password" class="form-control" id="pass" name="pass" pattern="[A-Za-z0-9_$#]{8,}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="pass2">Verification du Mot de passe</label>
-                            <input type="password" class="form-control" id="pass2" pattern="[A-Za-z0-9_$#]{8,}" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                        <input type="submit" value="S'inscrire" id="btnValidate" class="btn btn-primary">
-                    </div>
-                </form>
+<!-- Modal Connexion-->
+<div class="modal fade" id="login" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Connexion</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <form action="login.php" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="mail">Identifiant</label>
+                        <input type="email" class="form-control" id="mail" name="mail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pass">Mot de passe</label>
+                        <input type="password" class="form-control" id="pass" name="pass" pattern="[A-Za-z0-9_$#]{8,}" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <input type="submit" value="Se connecter" class="btn btn-primary">
+                </div>
+            </form>
         </div>
     </div>
-    <!-- MODAL CONNEXION-->
-    <div class="modal fade" id="login" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Connexion</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="login.php" method="post">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="mail">Identifiant</label>
-                            <input type="email" class="form-control" id="mail" name="mail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="pass">Mot de passe</label>
-                            <input type="password" class="form-control" id="pass" name="pass" pattern="[A-Za-z0-9_$#]{8,}" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                        <input type="submit" value="Se connecter" class="btn btn-primary">
-                    </div>
-                </form>
+</div>
+
+<!-- Modal Inscription-->
+<div class="modal fade" id="register" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Inscription</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <form action="register.php" method="post">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="mail">Pseudo</label>
+                        <input type="text" class="form-control" id="pseudo" name="pseudo" pattern="[A-Za-z0-9\u00c0\u00ff]{5,20}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mail">Courriel</label>
+                        <input type="email" class="form-control" id="mail" name="mail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pass">Mot de passe</label>
+                        <input type="password" class="form-control" id="pass" name="pass" pattern="[A-Za-z0-9_$#]{8,}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pass2">Vérification du mot de passe</label>
+                        <input type="password" class="form-control" id="pass2" pattern="[A-Za-z0-9_$#]{8,}" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"> Fermer </button>
+                    <input type="submit" value="S'inscrire" id="btnValidate" class="btn btn-primary" >
+                </div>
+            </form>
         </div>
     </div>
+</div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
     crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" 
     integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" 
     crossorigin="anonymous"></script>
-    <script src="js/mdp.js" ></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
