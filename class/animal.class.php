@@ -15,7 +15,7 @@ class Animal {
 
     //*Constructeurs
     //est une fonction public
-    public function __construct(string $newName,string $newType,string $newDob,float $newWeight,bool $newFemale){
+    public function __construct(string $newName='',string $newType='',string $newDob ='1970-01-02',float $newWeight=.2,bool $newFemale=true){
         $this-> name = $newName;
         $this-> type = $newType;
         $this->setDob($newDob);
@@ -61,6 +61,12 @@ class Animal {
 
         public function setFemale(bool $newFemale){
             $this -> female = $newFemale;
+        }
+
+        //*Destructeurs
+
+        public function __destruct(){
+            return $this-> name. ' est parti. ';
         }
 }
 
