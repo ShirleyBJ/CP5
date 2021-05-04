@@ -42,7 +42,7 @@
 
     <section id="team" class="d-flex flex-wrap" > 
     <div class="card m-3" style="width:15rem;">
-        <img src="pics/boys.jpg" alt="" class="card-img-top">
+        <img src="images/boys.jpg" alt="" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title">Lak</h5></h5>
                 <p><strong>Age : </strong>40 ans </p>
@@ -56,7 +56,7 @@
 
         $pattern = 
             '<div class="card m-3" style="width:15rem;">
-            <img src="pics/%s.jpg" alt="" class="card-img-top">
+            <img src="images/%s.jpg" alt="" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">%s</h5>
                     <p><strong>Age : </strong>%d ans </p>
