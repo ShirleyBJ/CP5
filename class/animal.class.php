@@ -13,9 +13,16 @@ class Animal {
         private $weight;
         private $female;
 
-    //*Constructeurs
+    //* Constantes de classe
+    const TYPE_DOG = 'chien';
+    const TYPE_CAT = 'chat';
+    const TYPE_BIRD = 'oiseau';
+    const TYPE_FISH = 'poisson';
+    const TYPE_FERRET = 'furet';
+
+    //* Constructeurs
     //est une fonction public
-    public function __construct(string $newName='',string $newType='',string $newDob ='1970-01-02',float $newWeight=.2,bool $newFemale=true){
+    public function __construct(string $newName='', string $newType='',string $newDob ='1970-01-02', float $newWeight=.2, bool $newFemale=true){
         $this-> name = $newName;
         $this-> type = $newType;
         $this->setDob($newDob);
@@ -62,6 +69,38 @@ class Animal {
         public function setFemale(bool $newFemale){
             $this -> female = $newFemale;
         }
+
+
+        //* Methode SPEAK : cri de l'animal selon son type
+        public function speak(){
+            switch (strtolower($this->type)){
+                case Animal::TYPE_DOG:
+                    return 'Wooof';
+                    break;
+
+                case Animal::TYPE_CAT:
+                    return 'Miaouu';
+                    break;
+                
+                case Animal::TYPE_BIRD:
+                    echo 'cui-cui';
+                    break;
+                
+                case Animal::TYPE_FISH:
+                    return 'blub';
+                    break;
+
+                case Animal::TYPE_FERRET:
+                    return 'Les furets.com';
+                    break;
+                
+                default:
+                    return 'Pfffft';
+                    break;
+            }
+        }
+
+        
 
         //*Destructeurs
 

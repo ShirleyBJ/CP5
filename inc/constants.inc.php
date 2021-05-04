@@ -1,4 +1,11 @@
 <?php
+
+//Active la gestion des erreurs
+ini_set('display_errors','1');
+ini_set('display_startup_errors','1');
+error_reporting(E_ALL);
+
+
 /*Selon la structure d'accueil de l'appli,
 on adapte les constantes de connexion à la BDD*/
 
