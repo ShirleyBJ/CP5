@@ -13,8 +13,8 @@ class Animal {
         private $weight;
         private $female;
     
-    //Attribut privé et static
-    private static $nb = 0;
+    //Attribut protected et static => accessible par les classes héritante
+    protected static $nb = 0;
 
     //* Constantes de classe
     const TYPE_DOG = 'chien';
@@ -69,7 +69,7 @@ class Animal {
         public function setWeight(float $newWeight){
             //test si le poids est cohérent 
             if($newWeight < .2 || $newWeight > 1000){
-                throw new Exception(__CLASS__.' : Le poids dit être compris entre 200g et 1t.');
+                throw new Exception(__CLASS__.' : Le poids doit être compris entre 200g et 1t.');
             }else {
                 $this -> weight = $newWeight;
             }

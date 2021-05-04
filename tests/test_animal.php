@@ -1,6 +1,8 @@
 <?php 
 include_once('../class/animal.class.php');
-echo '<h2> Instanciation de la classe </h2>';
+include_once('../class/human.class.php');
+
+echo '<h2> Instanciation de la classe Animal </h2>';
 
 $pet1= new Animal();
 $pet1 -> name = 'Milou';
@@ -48,4 +50,9 @@ $pet5->eat($pet4);
 
 unset($pet4);
 echo '<p>Nb d\'instances : '. Animal::countInstances();
+
+echo '<h2> Instanciation de la classe HUMAN </h2>';
+$man1 = new Human('Gaston','Lagaffe','1957-05-06',77,false);
+var_dump($man1);
+echo '<p>Nb d\'instances : '. Human::countInstances();
 ?>
