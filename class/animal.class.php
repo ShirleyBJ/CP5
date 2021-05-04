@@ -10,6 +10,7 @@ class Animal {
         public  $type;
     //Attribut privates
         private $dob;
+//      private $age;
         private $weight;
         private $female;
 
@@ -45,6 +46,11 @@ class Animal {
             return $this -> female;
         }
 
+        public function getAge(){
+            $d1 = strtotime(date('Y-m-d'));
+            $d2 = strtotime($this->getDob());
+            return floor(($d1-$d2)/60/60/24/365.25);
+        }
 
         //**Setter
         public function setDob(string $newDob){
@@ -100,10 +106,16 @@ class Animal {
             }
         }
 
-        
+        //* Methode EAT : permet de faire manger un animal à un autre(poids de l'animal mangé s'additionne au prédateur)*/
+        //? Argument qui est censé être mangé est du type Animal
+        public function eat(Animal $prey){
+            //si weight avait été en propriété public
+                //$this -> weight + $prey -> weight;
+            //mais weigth est en propriété privée
+            $this -> setWeight($this -> getWeight() + $prey -> getWeight());
+        }
 
-        //*Destructeurs
-
+        //* Destructeurs
         public function __destruct(){
             return $this-> name. ' est parti. ';
         }
