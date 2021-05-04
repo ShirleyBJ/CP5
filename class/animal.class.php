@@ -10,9 +10,11 @@ class Animal {
         public  $type;
     //Attribut privates
         private $dob;
-//      private $age;
         private $weight;
         private $female;
+    
+    //Attribut privé et static
+    private static $nb = 0;
 
     //* Constantes de classe
     const TYPE_DOG = 'chien';
@@ -22,13 +24,14 @@ class Animal {
     const TYPE_FERRET = 'furet';
 
     //* Constructeurs
-    //est une fonction public
+    //est une fonction public, instanciation d'une nouvelle classe
     public function __construct(string $newName='', string $newType='',string $newDob ='1970-01-02', float $newWeight=.2, bool $newFemale=true){
         $this-> name = $newName;
         $this-> type = $newType;
         $this->setDob($newDob);
         $this->setWeight($newWeight);
         $this->setFemale($newFemale);
+        self::$nb++; //incrémentation du compteur d'instance
     }
 
     //Accesseurs et mutateurs
@@ -115,8 +118,14 @@ class Animal {
             $this -> setWeight($this -> getWeight() + $prey -> getWeight());
         }
 
+        //Méthode static qui affihce le nombre d'instance de la classe en cours 
+        public static function countInstances(){
+            return self::$nb;
+        }
+
         //* Destructeurs
         public function __destruct(){
+            self::$nb--;//décrémente le compteur d'instance
             return $this-> name. ' est parti. ';
         }
 }
