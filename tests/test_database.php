@@ -55,8 +55,19 @@
         'pass' => 'carioca'
     );
 
-    if($mytable->create($data)){
-        echo '<p>Ajout réussi !';
+    // if($mytable->create($data)){
+    //     echo '<p>Ajout réussi !';
+    // }
+
+    echo '<h2>Méthode UPDATE: </h2>';
+    $data = array(
+        'pseudo' => 'Shirley',
+        'mail' => 'shirley.berchel@hotmail.com',
+        'pass' => '19960919'
+    );
+    
+    if($mytable->update($data,'uid',2)){
+        echo '<p>Modification réussi ! </p>';
     }
 
 ?>

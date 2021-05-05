@@ -80,9 +80,31 @@ final class Model extends Database{
         return $this->db->getResult($sql,$params);
     }
 
-    
-
-
+    /**
+     * Méthode qui modifie la table via la ligne passé et l'array (la valeur) passées en paramétre
+     * @param array $data - tableau associatif contenant les données à remplacer dans la table
+     * @param string $pk - clé primaire de la table 
+     * @param string $id - valeur de la clé primaire
+     * @return bool renvoie vrai si modification OK
+     */
+    public function update(array $data, string $pk, string $id) : bool{
+        //remplit le tableau de paramétre pour la requête
+        //tentative de modification 
+        try{
+            foreach($data as $key=>$val){
+                $params[':'.$key]=htmlspecialchars($val);
+                $assign[]= $key.'=:'.$key;//on assigne des valeurs aux colonnes, tab indéxés dc s'index automatiquement (crochet vide)
+            }
+            $params[':id']=$id;
+            //Prépare exécute la requête SQL
+            $sql='UPDATE '. $this->getTable() . ' SET ' .implode(',', $assign) . ' WHERE ' . $pk . '=:id';
+            $qry= $this->db->cnn->prepare($sql);
+            return $qry->execute($params);
+        }catch(PDOException $err){
+            throw new Exception(__CLASS__. ' : ' . $err->getMessage());
+        }
+    }
 }
+
 
 ?>
