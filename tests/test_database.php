@@ -20,7 +20,7 @@
 
     echo '<h2>GET HTML TABLE: </h2>';
     $sql = 'SELECT * FROM country';
-    echo $mydb->getHtmlTable($sql);
+    //echo $mydb->getHtmlTable($sql);
 
     echo '<h2> GETHmlSelect: </h2>';
     //Test 1 : avec table city
@@ -29,5 +29,9 @@
     //Test 2 : avec table country
         $sql = 'SELECT * FROM country';
         echo $mydb->getHtmlSelect('country',$sql);
+    //Test 3 : avec table country
+    $sql = 'SELECT * FROM country WHERE continent = ? AND IndepYear < ?';
+    $params=array('Asia',1900);
+    echo $mydb->getHtmlSelect('country2',$sql,$params);
 
 ?>
