@@ -24,7 +24,7 @@ class Database{
 
         //Tente une connexion à la BDD
         try{
-            $this->cnn = new PDO('mysql: host='. $this->getHost() . ' ;dname= ' . $this->getDbname() . '; charset=utf8', $this->getUser(),$this->getPass());
+            $this->cnn = new PDO('mysql: host='. $this->getHost() . ';dbname=' . $this->getDbname() . ';charset=utf8', $this->getUser(),$this->getPass());
             //Options de connexion  : erreur + type de renvoie
             $this->cnn -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             //Précise que lorsque connexion renvoie le résultat de la requéte,il le renvoie ss forme de tableau asssociatif
@@ -86,7 +86,7 @@ class Database{
             //Renvoie du tab
             return $qry->fetchAll();
         } catch(PDOException $err){
-            throw new Exception(__CLASS__. ' : '. $err->getMessage());
+            throw new Exception(__CLASS__ . ' : '. $err->getMessage());
         }
     }
 
@@ -95,6 +95,5 @@ class Database{
         return json_encode($data);
     }
 }
-
 
 ?>
