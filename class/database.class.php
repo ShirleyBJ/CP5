@@ -94,6 +94,33 @@ class Database{
         $data = $this->getResult($sql,$params);
         return json_encode($data);
     }
+
+    /**
+     * *Méthode renvoie sous la forme d'un tableau HTML le résultat d'une requête paramétré
+     * @param string $sql -requete sql de type select paramétrée
+     * @param array $params - tableau contenant les valeurs à associer aux paramétres de la requête SQL(par défaut vide)
+     * @return string code HTML correspondant au tableau rempli
+     */
+    public function getHtmlTable(string $sql, array $params=array()) : string {
+        //Récupére sous la forme d'un tableau associatif le résultat de la requête SQL
+        $data = $this->getResult($sql,$params);
+        //var_dump($data);
+        
+        //Parcourt le premier array qui contient des tableau associatif
+        $html = '<table class="table table-striped">';
+        foreach($data as $row){//ligne de la table résultat du sql
+            $html .= '<tr>';
+            //Parcourt le second array
+            foreach($row as $key => $val){
+                $html.= '<td>'. $val .'</td>';
+            }
+            $html .= '</tr>';
+        } 
+        //on concaténe $html par sa valeur actuel avec la balise fermante (.=)
+        $html.='</table>';
+
+        return $html;
+    } 
 }
 
 ?>

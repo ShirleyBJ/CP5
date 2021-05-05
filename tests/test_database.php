@@ -18,4 +18,9 @@
     $json=$mydb->getJSON($sql,$params);
     echo $json;
 
+    echo '<h2>GET HTML TABLE: </h2>';
+    $sql = 'SELECT * FROM country';
+    echo $mydb->getHtmlTable($sql);
+    
+
 ?>
