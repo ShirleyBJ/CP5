@@ -2,6 +2,7 @@
 
     include_once('../inc/constants.inc.php');
     include_once('../class/database.class.php');
+    include_once('../class/model.class.php');
 
     echo '<h2>Instanciation database : </h2>';
 
@@ -34,4 +35,15 @@
     $params=array('Asia',1900);
     echo $mydb->getHtmlSelect('country2',$sql,$params);
 
+    echo '<h2>Instanciation de Model: </h2>';
+    $mytable= new Model(HOST,DATA,USER,PASS,'users');
+    var_dump($mytable);
+
+    echo '<h2>Méthode READALL: </h2>';
+    var_dump($mytable->readAll());
+
+    echo '<h2>Méthode READ: </h2>';
+    $mytable->setTable('country');
+    var_dump($mytable->read('code','MDG'));
+    var_dump($mytable->read('code','FRA'));
 ?>

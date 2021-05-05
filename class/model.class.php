@@ -13,7 +13,6 @@ final class Model extends Database{
         private $table='';
 
     //Constructeurs
-
     public function __construct(string $newHost, string $newDbname, string $newUser, string $newPass, string $newTable)
     {
         //Assigne les valeurs des arguments aux attrobuts de la classe fille
@@ -31,6 +30,29 @@ final class Model extends Database{
     public function setTable(string $newTable){
         $this->table = $newTable;
     }
+
+    /**
+     * Renvoie toutes les lignes de la table 
+     */
+    public function readAll() : array {
+        //définir la requête
+        $sql='SELECT * FROM '. $this->getTable();
+        return $this->db->getResult($sql);
+    }
+
+    /**
+     * Renvoie une seule ligne de la table
+     * @param string $pk - colonne clé primaire
+     * @param string $id - valeur de la clé primaire
+     * @return array - retourne un tableau correspondant au résultat demandé
+     */
+    public function read(string $pk, string $id) : array {
+        //définir la requête
+        $sql='SELECT * FROM '. $this->getTable() . ' WHERE ' . $pk . ' =?';
+        $params = array($id);
+        return $this->db->getResult($sql,$params);
+    }
+
 
 }
 
