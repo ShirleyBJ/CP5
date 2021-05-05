@@ -21,6 +21,13 @@
     echo '<h2>GET HTML TABLE: </h2>';
     $sql = 'SELECT * FROM country';
     echo $mydb->getHtmlTable($sql);
-    
+
+    echo '<h2> GETHmlSelect: </h2>';
+    //Test 1 : avec table city
+        $sql = 'SELECT name FROM city';
+        echo $mydb->getHtmlSelect('city',$sql);
+    //Test 2 : avec table country
+        $sql = 'SELECT * FROM country';
+        echo $mydb->getHtmlSelect('country',$sql);
 
 ?>

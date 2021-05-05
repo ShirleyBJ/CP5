@@ -103,24 +103,56 @@ class Database{
      */
     public function getHtmlTable(string $sql, array $params=array()) : string {
         //Récupére sous la forme d'un tableau associatif le résultat de la requête SQL
-        $data = $this->getResult($sql,$params);
-        //var_dump($data);
+        //Préparation de la requete
+        $qry = $this->cnn->prepare($sql);
+        //Exécution de la requete
+        $qry->execute($params);
         
-        //Parcourt le premier array qui contient des tableau associatif
+        //En-tête du tableau HTML
         $html = '<table class="table table-striped">';
-        foreach($data as $row){//ligne de la table résultat du sql
-            $html .= '<tr>';
-            //Parcourt le second array
-            foreach($row as $key => $val){
-                $html.= '<td>'. $val .'</td>';
+        $html .= '<thead><tr>';
+            //parcourt toute les colonnes qu'il y a dans le résulatat de la requete pour récupérer le nom de mes colonnes
+            for($i=0; $i<$qry->columnCount();$i++){
+                $meta=$qry->getColumnMeta($i);
+                $html.='<th>'.$meta['name'].'</th>';
             }
-            $html .= '</tr>';
-        } 
+        $html .= '</tr></thead><tbody>';
+
+            //Parcourt le premier array qui contient des tableau associatif
+            foreach($qry->fetchAll() as $row){//ligne de la table résultat du sql
+                $html .= '<tr>';
+                //Parcourt le second array
+                foreach($row as $key => $val){
+                    $html.= '<td>'. $val .'</td>';
+                }
+                $html .= '</tr>';
+            } 
         //on concaténe $html par sa valeur actuel avec la balise fermante (.=)
-        $html.='</table>';
+        $html.='</tbody></table>';
 
         return $html;
     } 
+
+    public function getHtmlSelect(string $id, string $sql, array $params=array()) :string{
+        //Prépare et exécute la requête
+        $qry=$this->cnn->prepare($sql);
+        $qry->execute($params);
+        //Récupére le résultat dans un tableau indéxés
+        $data = $qry->fetchAll(PDO::FETCH_NUM);
+
+        $html = '<select class="form-control" id="'. $id .'">';
+            foreach($data as $val){
+                //Si la requête renvoie une seule colonnes
+                if($qry->columnCount() === 1){
+                    $html.='<option value="'.$val[0].'">'.$val[0].'</option>';
+                } else {
+                    $html.='<option value="'.$val[0].'">'.$val[1].'</option>';
+                }
+            }
+        $html .= '</select>';
+        
+        return $html;
+    }
 }
 
 ?>
