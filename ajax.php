@@ -9,7 +9,7 @@
 </head>
 <body class="container">
     
-    <h1>Liste des pays par région</h1>
+    <h1>Liste des pays par langue parlé</h1>
 
     <?php
         include_once('inc/constants.inc.php');
@@ -17,14 +17,15 @@
     //Utilisation de la classe Database
         $db = new Database(HOST,DATA,USER,PASS);
     //Afficher toutes les régions
-        $sql = 'SELECT DISTINCT Region FROM country ORDER BY Region';
-        echo $db->getHtmlSelect('region',$sql);
+        $sql = 'SELECT DISTINCT language FROM countrylanguage ORDER BY language';
+        echo $db->getHtmlSelect('lang',$sql);
     // Afficher les pays en fonction du select de langue parlé
     ?>
     <div id="pays" class='mt-3'>
     <?php
-    echo $db->getHtmlTable('SELECT * FROM country');
+    echo $db->getHtmlTable('SELECT Code,Name,Continent,Region,SurfaceArea,IndepYear,Population,LifeExpectancy FROM country');
     ?>
     </div>
 </body>
+<script src="js/ajax.js"></script>
 </html>
