@@ -46,4 +46,17 @@
     $mytable->setTable('country');
     var_dump($mytable->read('code','MDG'));
     var_dump($mytable->read('code','FRA'));
+
+    echo '<h2>Méthode CREATE: </h2>';
+    $mytable->setTable('users');
+    $data = array(
+        'pseudo' => 'Thomas',
+        'mail' => 'thomas.deray@lesnuls.fr',
+        'pass' => 'carioca'
+    );
+
+    if($mytable->create($data)){
+        echo '<p>Ajout réussi !';
+    }
+
 ?>

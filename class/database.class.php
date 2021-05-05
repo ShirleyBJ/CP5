@@ -9,7 +9,7 @@ class Database{
     private $dbname;
     private $user;
     private $pass;
-    private $cnn; // généré par le constructeur pour obtenir une connexion
+    protected $cnn; // généré par le constructeur pour obtenir une connexion
     private $connected=false; //généré par le constructeur
 
     //*Constructeurs
