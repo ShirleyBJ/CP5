@@ -62,12 +62,17 @@
     echo '<h2>Méthode UPDATE: </h2>';
     $data = array(
         'pseudo' => 'Shirley',
-        'mail' => 'shirley.berchel@hotmail.com',
-        'pass' => '19960919'
+        'mail' => 'shirley.berchel@gmail.com',
+        'pass' => 'Elise1601#'
     );
     
     if($mytable->update($data,'uid',2)){
         echo '<p>Modification réussi ! </p>';
+    }
+
+    echo '<h2>Méthode DELETE: </h2>';
+    if($mytable->delete('uid',4)){
+        echo '<p>Suppresion réussi ! </p>';
     }
 
 ?>

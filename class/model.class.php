@@ -104,6 +104,24 @@ final class Model extends Database{
             throw new Exception(__CLASS__. ' : ' . $err->getMessage());
         }
     }
+
+    /**
+     * Methode qui supprime dans la table la ligne dont l'id est passée en paramétre
+     * @param string $pk - renvoie colonne clé primaire
+     * @param string $id - valeur de la clé primaire
+     * @return bool renvoie TRUE si suppression OK
+     */
+
+    public function delete(string $pk, string $id) : bool {
+        try{
+            $sql = 'DELETE FROM '. $this->getTable(). ' WHERE ' . $pk . '=?';
+            $params = array($id);
+            $qry = $this->db->cnn->prepare($sql);
+            return $qry->execute($params);
+        }catch(PDOException $err){
+            throw new Exception(__CLASS__. ' : ' . $err->getMessage());
+        }
+    }
 }
 
 
