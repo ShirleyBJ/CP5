@@ -1,6 +1,6 @@
 # CP5
 
-##**Description**
+## **Description**
 
 Il s'agit d'un petit projet mettant en oeuvre :
 
@@ -9,7 +9,7 @@ Il s'agit d'un petit projet mettant en oeuvre :
 3. Une classe Database et sa classe fille Model (connexion à une BDD en PDO et CRUD)
 
 
-##**Language et technologie utilisés**
+## **Language et technologie utilisés**
 
 * HTML5
 * CSS3 via Bootstrap 4.6
